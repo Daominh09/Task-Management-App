@@ -1,0 +1,26 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="flex-container">
+    <div class="box">
+      <h1>Work</h1>
+    </div>
+    
+    <div class="work">
+    <% workList.forEach((work) =>{ %>
+      <form>
+        <div class="workLi">
+          <input type="checkbox" id=<%=work%>>
+          <label name="work"><%= work %></label><br>
+        </div>
+      </form>
+    <% }); %>
+    </div>
+    
+    <form action="/submitWork" method="POST">
+        <div class="input">
+            <input type="text" name="newWork" placeholder="New Item">
+            <input type="submit" value="+" id="button">
+        </div>
+    </form>
+</div>
+<%- include('./partials/footer.ejs') %>
