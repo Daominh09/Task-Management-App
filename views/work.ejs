@@ -1,26 +1,32 @@
-<%- include('./partials/header.ejs') %>
+<%- include('partials/header') %>
 
 <div class="flex-container">
-    <div class="box">
-      <h1>Work</h1>
-    </div>
-    
-    <div class="work">
-    <% workList.forEach((work) =>{ %>
-      <form>
-        <div class="workLi">
-          <input type="checkbox" id=<%=work%>>
-          <label name="work"><%= work %></label><br>
-        </div>
-      </form>
+  <div class="box">
+    <h1>Work</h1>
+  </div>
+
+  <div class="work">
+    <% workTasks.forEach((task, idx) => { %>
+      <div class="workLi <%= task.completed ? 'completed' : '' %>">
+        <form action="/toggleWork" method="POST">
+          <input type="hidden" name="index" value="<%= idx %>">
+          <input
+            type="checkbox"
+            id="work-<%= idx %>"
+            <%= task.completed ? 'checked' : '' %>
+            onchange="this.form.submit()"
+          >
+          <label for="work-<%= idx %>"><%= task.text %></label>
+        </form>
+      </div>
     <% }); %>
-    </div>
-    
-    <form action="/submitWork" method="POST">
-        <div class="input">
-            <input type="text" name="newWork" placeholder="New Item">
-            <input type="submit" value="+" id="button">
-        </div>
-    </form>
+  </div>
+
+  <form action="/submitWork" method="POST" class="input-form">
+    <input type="text" name="newTask" placeholder="New Item" required>
+    <button type="submit">+</button>
+  </form>
 </div>
-<%- include('./partials/footer.ejs') %>
+
+<%- include('partials/footer') %>
+

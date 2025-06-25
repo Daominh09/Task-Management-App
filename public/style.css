@@ -1,86 +1,125 @@
+/* styles.css */
+
 body {
-    position: relative;
-}
-.flex-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-.box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: wheat;
-    width: 450px;
-    height: 60px;
-    text-align: center;
-    border-radius:15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-h1 {
-    font-family: sans-serif;
-    font-weight: 400;
-}
-form[action='/submit'],form[action='/submitWork']{
-    margin-bottom: 100px;
-}
-.work{
-    display: flex;
-    flex-direction: column;
-    
-}
-.workLi, .input{
-    display: flex;
-    align-items: center;
-    position: relative;
-    background-color: whitesmoke;
-    border-radius: 15px;
-    width: 400px;
-    height: 40px;
-    margin-bottom: 10px;
-}
-input[type="checkbox"] {
-    position: relative;
-    left: 30px;
-    height: 25px;
-    width: 25px;    
-}
-label {
-    position: relative;
-    left: 45px;
-    font-size: 20px;
-    font-family: sans-serif;
-}
-input[type="text"]{
-    position: absolute;
-    left: 30px;
-    width: 300px;
-    border: 0;
-    background-color: whitesmoke;
-}
-input[id='button'], .clearbutton{
-    position: absolute;
-    right: 30px;
-    width: 30px;
-    height: 30px;
-    background-color: wheat;
-    border-radius: 50%;
-    border-style: solid;
-    border-width: 2px;
-    text-align: center;
-}
-    
-.footer {
-    position: fixed;
-    bottom: 0px;
-    width: 80%;
-    left: 10%;
-    background-color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-span {
-    font-family: sans-serif;
+.flex-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: #f0d9b5;
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.box h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.work {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.workLi {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.workLi.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+  background-color: #e0e0e0;
+}
+
+.workLi input[type="checkbox"] {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.workLi label {
+  flex: 1;
+  font-size: 1rem;
+  color: #444;
+}
+
+.input-form {
+  width: 100%;
+  display: flex;
+  margin-top: auto;
+}
+
+.input-form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-form input[type="text"]:focus {
+  border-color: #999;
+}
+
+.input-form button {
+  padding: 0 20px;
+  border: none;
+  background-color: #f0d9b5;
+  border-radius: 0 8px 8px 0;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.input-form button:hover {
+  background-color: #e5c49c;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: transparent;
+  font-size: 0.875rem;
+  color: #666;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .box h1 {
+    font-size: 1.25rem;
+  }
+  .input-form button {
+    font-size: 1rem;
+  }
 }

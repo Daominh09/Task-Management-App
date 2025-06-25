@@ -1,27 +1,31 @@
-
-<%- include('./partials/header.ejs') %>
+<%- include('partials/header') %>
 
 <div class="flex-container">
-    <div class="box">
-      <h1><%= weekDay %>, <%= month %> <%= day %></h1>
-    </div>
-    
-    <div class="work">
-    <% todayWorkList.forEach((todayWork) =>{ %>
-      <form>
-        <div class="workLi">
-          <input type="checkbox" id=<%=todayWork%>>
-          <label name="work"><%= todayWork %></label><br>
-        </div>
-      </form>
+  <div class="box">
+    <h1><%= weekDay %>, <%= month %> <%= day %></h1>
+  </div>
+
+  <div class="work">
+    <% todayTasks.forEach((task, idx) => { %>
+      <div class="workLi <%= task.completed ? 'completed' : '' %>">
+        <form action="/toggleToday" method="POST">
+          <input type="hidden" name="index" value="<%= idx %>">
+          <input
+            type="checkbox"
+            id="today-<%= idx %>"
+            <%= task.completed ? 'checked' : '' %>
+            onchange="this.form.submit()"
+          >
+          <label for="today-<%= idx %>"><%= task.text %></label>
+        </form>
+      </div>
     <% }); %>
-    </div>
-    
-    <form action="/submit" method="POST">
-        <div class="input">
-            <input type="text" name="newWork" placeholder="New Item">
-            <input type="submit" value="+" id="button">
-        </div>
-    </form>
+  </div>
+
+  <form action="/submit" method="POST" class="input-form">
+    <input type="text" name="newTask" placeholder="New Item" required>
+    <button type="submit">+</button>
+  </form>
 </div>
-<%- include('./partials/footer.ejs') %>
+
+<%- include('partials/footer') %>
